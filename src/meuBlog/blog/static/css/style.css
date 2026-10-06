@@ -1,0 +1,13 @@
+.cabecalho{
+    height: 1000;
+    width: 20;
+}
+
+body{
+    display: flex;
+}
+
+#sidebar{
+    display: flex;
+    align-self: flex-end;
+}
