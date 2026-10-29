@@ -16,10 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from blog.views import tela_inicial
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import PostSiteMap
+sitemaps = {
+    "posts": PostSiteMap
+}
 
 urlpatterns = [
         path("admin/", admin.site.urls),
-        path("blog/", include("blog.urls", namespace="blog")),
-        path("", include("blog.urls") ),
-        path("posts_list/", include("blog.urls"))
+        path("", tela_inicial, name="home"),
+        path("blog/", include("blog.urls")),
+        path(
+            "sitemap.xml",
+             sitemap,
+             {"sitemaps": sitemaps },
+             name="django.contrib.sitemaps.views.sitemap"
+        )
 ]
